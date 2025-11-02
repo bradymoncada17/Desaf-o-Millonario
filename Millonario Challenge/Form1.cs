@@ -23,16 +23,24 @@ namespace Millonario_Challenge
             _repoPreg = new RepositorioPreguntasSql();
             _repoPart = new RepositorioPartidasSql() as IRepositorioPartidas;
             _repoUsr = new RepositorioUsuariosSql();
+            _usuarioId = usuarioId; // Asignar el valor recibido al campo
+            _nombreUsuario = nombreUsuario; // Asignar el valor recibido al campo
             lblBienvenida.Text = $"¡Bienvenido, {_nombreUsuario}!";
         }
 
         public FormularioPrincipal()
         {
+            InitializeComponent();
+            _repoPreg = new RepositorioPreguntasSql();
+            _repoPart = new RepositorioPartidasSql() as IRepositorioPartidas;
+            _repoUsr = new RepositorioUsuariosSql();
+            _usuarioId = 0;
+            _nombreUsuario = string.Empty;
         }
 
         private void btnIniciarJuego_Click(object sender, EventArgs e)
         {
-            var frm = new FormularioJuego(_usuarioId, _nombreUsuario);
+            var frm = new frmFormularioJuego(_repoPreg, _repoPart, _repoUsr);
             frm.ShowDialog();
         }
 

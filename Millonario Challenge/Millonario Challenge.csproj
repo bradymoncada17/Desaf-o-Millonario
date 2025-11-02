@@ -105,6 +105,9 @@
     <EmbeddedResource Include="FormularioAdmin.resx">
       <DependentUpon>FormularioAdmin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormularioJuego.resx">
+      <DependentUpon>FormularioJuego.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormularioRanking.resx">
       <DependentUpon>FormularioRanking.cs</DependentUpon>
     </EmbeddedResource>
