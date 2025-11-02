@@ -12,21 +12,12 @@ namespace Millonario_Challenge
         public int GuardarPartida(int? usuarioId, int dineroGanado, int respuestasCorrectas)
         {
             var conexion = ConexionBD.Instancia.ObtenerConexion();
-            try
+            using (var cmd = new SqlCommand("INSERT INTO Partidas (UsuarioId, FechaInicio, FechaFin, DineroGanado, RespuestasCorrectas) OUTPUT INSERTED.PartidaId VALUES(@uid, GETDATE(), NULL, @dinero, @correctas)", conexion))
             {
-                using (var cmd = new SqlCommand("INSERT INTO Partidas (UsuarioId, FechaInicio, FechaFin, DineroGanado, RespuestasCorrectas) OUTPUT INSERTED.PartidaId VALUES(@uid, GETDATE(), NULL, @dinero, @correctas)", conexion))
-                {
-                    cmd.Parameters.AddWithValue("@uid", usuarioId.HasValue ? (object)usuarioId.Value : DBNull.Value);
-                    cmd.Parameters.AddWithValue("@dinero", dineroGanado);
-                    cmd.Parameters.AddWithValue("@correctas", respuestasCorrectas);
-                    var result = cmd.ExecuteScalar();
-                    return result == null ? 0 : Convert.ToInt32(result);
-                }
-            }
-            catch (Exception ex)
-            {
-                // puedes loggear aquí o relanzar con más contexto
-                throw new Exception("Error al guardar la partida: " + ex.Message, ex);
+                cmd.Parameters.AddWithValue("@uid", usuarioId.HasValue ? (object)usuarioId.Value : DBNull.Value);
+                cmd.Parameters.AddWithValue("@dinero", dineroGanado);
+                cmd.Parameters.AddWithValue("@correctas", respuestasCorrectas);
+                return (int)cmd.ExecuteScalar();
             }
         }
 

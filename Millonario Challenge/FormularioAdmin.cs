@@ -95,163 +95,13 @@ namespace Millonario_Challenge
             }
         }
 
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // VALIDACIÓN
-                if (string.IsNullOrWhiteSpace(txtPregunta.Text) ||
-                    string.IsNullOrWhiteSpace(txtOpcionA.Text) ||
-                    string.IsNullOrWhiteSpace(txtOpcionB.Text) ||
-                    string.IsNullOrWhiteSpace(txtOpcionC.Text) ||
-                    string.IsNullOrWhiteSpace(txtOpcionD.Text) ||
-                    !int.TryParse(txtIndiceCorrecto.Text, out int indice) || indice < 0 || indice > 3)
-                {
-                    MessageBox.Show("Complete todos los campos correctamente (Índice 0..3).", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+       
 
-                int dif;
-                if (this.Controls.ContainsKey("cmbDificultad"))
-                {
-                    var cmb = this.Controls["cmbDificultad"] as ComboBox;
-                    dif = (cmb != null) ? cmb.SelectedIndex + 1 : 1;
-                }
-                else
-                {
-                    if (!int.TryParse(txtDificultad.Text, out dif) || dif < 1 || dif > 3)
-                    {
-                        MessageBox.Show("Seleccione o ingrese una dificultad válida (1..3).", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-                }
-
-                // Crear PreguntaOpcionMultiple y lista opciones para el repositorio
-                var listaOpciones = new List<string> { txtOpcionA.Text, txtOpcionB.Text, txtOpcionC.Text, txtOpcionD.Text };
-                var pregunta = new PreguntaOpcionMultiple(txtPregunta.Text, listaOpciones, indice, dif, dif * 100, "General");
-
-                // Construir lista de tuplas (texto, esCorrecta) según la firma del repositorio
-                var opcionesParaRepo = new List<(string texto, bool esCorrecta)>
-                {
-                    (txtOpcionA.Text, indice == 0),
-                    (txtOpcionB.Text, indice == 1),
-                    (txtOpcionC.Text, indice == 2),
-                    (txtOpcionD.Text, indice == 3)
-                };
-
-                _repoPreguntas.Agregar(pregunta, opcionesParaRepo);
-
-                MessageBox.Show("Pregunta agregada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                CargarLista();
-                LimpiarCampos();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al agregar la pregunta: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void btnEditar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (lstPreguntas.SelectedIndex == -1)
-                {
-                    MessageBox.Show("Seleccione una pregunta para editar.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                var texto = lstPreguntas.SelectedItem.ToString();
-                var partes = texto.Split(new char[] { '-' }, 2);
-                if (!int.TryParse(partes[0].Trim(), out int id))
-                {
-                    MessageBox.Show("No se pudo leer el id de la pregunta seleccionada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                if (string.IsNullOrWhiteSpace(txtPregunta.Text) ||
-                    string.IsNullOrWhiteSpace(txtOpcionA.Text) ||
-                    string.IsNullOrWhiteSpace(txtOpcionB.Text) ||
-                    string.IsNullOrWhiteSpace(txtOpcionC.Text) ||
-                    string.IsNullOrWhiteSpace(txtOpcionD.Text) ||
-                    !int.TryParse(txtIndiceCorrecto.Text, out int indice) || indice < 0 || indice > 3)
-                {
-                    MessageBox.Show("Complete todos los campos correctamente.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                int dif;
-                if (this.Controls.ContainsKey("cmbDificultad"))
-                {
-                    var cmb = this.Controls["cmbDificultad"] as ComboBox;
-                    dif = (cmb != null) ? cmb.SelectedIndex + 1 : 1;
-                }
-                else
-                {
-                    if (!int.TryParse(txtDificultad.Text, out dif) || dif < 1 || dif > 3)
-                    {
-                        MessageBox.Show("Seleccione o ingrese una dificultad válida (1..3).", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-                }
-
-                // Opción 1 (sencilla): eliminar la pregunta antigua y crear una nueva con mismo contenido
-                // (más simple si aún no implementaste Actualizar con manejo de OpcionId)
-                _repoPreguntas.Eliminar(id);
-
-                var listaOpciones = new List<string> { txtOpcionA.Text, txtOpcionB.Text, txtOpcionC.Text, txtOpcionD.Text };
-                var nuevaPregunta = new PreguntaOpcionMultiple(txtPregunta.Text, listaOpciones, indice, dif, dif * 100, "General");
-                var opcionesParaRepo = new List<(string texto, bool esCorrecta)>
-                {
-                    (txtOpcionA.Text, indice == 0),
-                    (txtOpcionB.Text, indice == 1),
-                    (txtOpcionC.Text, indice == 2),
-                    (txtOpcionD.Text, indice == 3)
-                };
-
-                _repoPreguntas.Agregar(nuevaPregunta, opcionesParaRepo);
-
-                MessageBox.Show("Pregunta editada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                CargarLista();
-                LimpiarCampos();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al editar la pregunta: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+       
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (lstPreguntas.SelectedIndex == -1)
-                {
-                    MessageBox.Show("Seleccione una pregunta para eliminar.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                var texto = lstPreguntas.SelectedItem.ToString();
-                var partes = texto.Split(new char[] { '-' }, 2);
-                if (!int.TryParse(partes[0].Trim(), out int id))
-                {
-                    MessageBox.Show("No se pudo leer el id de la pregunta seleccionada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                var confirmar = MessageBox.Show("¿Seguro que desea eliminar esta pregunta?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (confirmar == DialogResult.Yes)
-                {
-                    _repoPreguntas.Eliminar(id);
-                    MessageBox.Show("Pregunta eliminada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    CargarLista();
-                    LimpiarCampos();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al eliminar la pregunta: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
         }
         private void btnCargarSemilla_Click(object sender, EventArgs e)
         {
@@ -334,6 +184,165 @@ namespace Millonario_Challenge
             else
             {
                 txtDificultad.Clear();
+            }
+        }
+
+        private void btnAgregar_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                // VALIDACIÓN
+                if (string.IsNullOrWhiteSpace(txtPregunta.Text) ||
+                    string.IsNullOrWhiteSpace(txtOpcionA.Text) ||
+                    string.IsNullOrWhiteSpace(txtOpcionB.Text) ||
+                    string.IsNullOrWhiteSpace(txtOpcionC.Text) ||
+                    string.IsNullOrWhiteSpace(txtOpcionD.Text) ||
+                    !int.TryParse(txtIndiceCorrecto.Text, out int indice) || indice < 0 || indice > 3)
+                {
+                    MessageBox.Show("Complete todos los campos correctamente (Índice 0..3).", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                int dif;
+                if (this.Controls.ContainsKey("cmbDificultad"))
+                {
+                    var cmb = this.Controls["cmbDificultad"] as ComboBox;
+                    dif = (cmb != null) ? cmb.SelectedIndex + 1 : 1;
+                }
+                else
+                {
+                    if (!int.TryParse(txtDificultad.Text, out dif) || dif < 1 || dif > 3)
+                    {
+                        MessageBox.Show("Seleccione o ingrese una dificultad válida (1..3).", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+
+                // Crear PreguntaOpcionMultiple y lista opciones para el repositorio
+                var listaOpciones = new List<string> { txtOpcionA.Text, txtOpcionB.Text, txtOpcionC.Text, txtOpcionD.Text };
+                var pregunta = new PreguntaOpcionMultiple(txtPregunta.Text, listaOpciones, indice, dif, dif * 100, "General");
+
+                // Construir lista de tuplas (texto, esCorrecta) según la firma del repositorio
+                var opcionesParaRepo = new List<(string texto, bool esCorrecta)>
+                {
+                    (txtOpcionA.Text, indice == 0),
+                    (txtOpcionB.Text, indice == 1),
+                    (txtOpcionC.Text, indice == 2),
+                    (txtOpcionD.Text, indice == 3)
+                };
+
+                _repoPreguntas.Agregar(pregunta, opcionesParaRepo);
+
+                MessageBox.Show("Pregunta agregada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CargarLista();
+                LimpiarCampos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar la pregunta: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnEditar_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                if (lstPreguntas.SelectedIndex == -1)
+                {
+                    MessageBox.Show("Seleccione una pregunta para editar.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var texto = lstPreguntas.SelectedItem.ToString();
+                var partes = texto.Split(new char[] { '-' }, 2);
+                if (!int.TryParse(partes[0].Trim(), out int id))
+                {
+                    MessageBox.Show("No se pudo leer el id de la pregunta seleccionada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(txtPregunta.Text) ||
+                    string.IsNullOrWhiteSpace(txtOpcionA.Text) ||
+                    string.IsNullOrWhiteSpace(txtOpcionB.Text) ||
+                    string.IsNullOrWhiteSpace(txtOpcionC.Text) ||
+                    string.IsNullOrWhiteSpace(txtOpcionD.Text) ||
+                    !int.TryParse(txtIndiceCorrecto.Text, out int indice) || indice < 0 || indice > 3)
+                {
+                    MessageBox.Show("Complete todos los campos correctamente.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                int dif;
+                if (this.Controls.ContainsKey("cmbDificultad"))
+                {
+                    var cmb = this.Controls["cmbDificultad"] as ComboBox;
+                    dif = (cmb != null) ? cmb.SelectedIndex + 1 : 1;
+                }
+                else
+                {
+                    if (!int.TryParse(txtDificultad.Text, out dif) || dif < 1 || dif > 3)
+                    {
+                        MessageBox.Show("Seleccione o ingrese una dificultad válida (1..3).", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+
+                // Opción 1 (sencilla): eliminar la pregunta antigua y crear una nueva con mismo contenido
+                // (más simple si aún no implementaste Actualizar con manejo de OpcionId)
+                _repoPreguntas.Eliminar(id);
+
+                var listaOpciones = new List<string> { txtOpcionA.Text, txtOpcionB.Text, txtOpcionC.Text, txtOpcionD.Text };
+                var nuevaPregunta = new PreguntaOpcionMultiple(txtPregunta.Text, listaOpciones, indice, dif, dif * 100, "General");
+                var opcionesParaRepo = new List<(string texto, bool esCorrecta)>
+                {
+                    (txtOpcionA.Text, indice == 0),
+                    (txtOpcionB.Text, indice == 1),
+                    (txtOpcionC.Text, indice == 2),
+                    (txtOpcionD.Text, indice == 3)
+                };
+
+                _repoPreguntas.Agregar(nuevaPregunta, opcionesParaRepo);
+
+                MessageBox.Show("Pregunta editada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CargarLista();
+                LimpiarCampos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al editar la pregunta: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnEliminar_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                if (lstPreguntas.SelectedIndex == -1)
+                {
+                    MessageBox.Show("Seleccione una pregunta para eliminar.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var texto = lstPreguntas.SelectedItem.ToString();
+                var partes = texto.Split(new char[] { '-' }, 2);
+                if (!int.TryParse(partes[0].Trim(), out int id))
+                {
+                    MessageBox.Show("No se pudo leer el id de la pregunta seleccionada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                var confirmar = MessageBox.Show("¿Seguro que desea eliminar esta pregunta?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (confirmar == DialogResult.Yes)
+                {
+                    _repoPreguntas.Eliminar(id);
+                    MessageBox.Show("Pregunta eliminada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CargarLista();
+                    LimpiarCampos();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al eliminar la pregunta: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

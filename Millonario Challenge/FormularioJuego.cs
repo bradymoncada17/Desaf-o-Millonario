@@ -27,12 +27,39 @@ namespace Millonario_Challenge
         private int _partidaId = 0;
         private bool _uso5050 = false, _usoPublico = false, _usoLlamar = false;
 
-        public FormularioJuego(IRepositorioPreguntas repoP, IRepositorioPartidas repoPa, IRepositorioUsuarios repoU)
+        private int _usuarioId; // añade este campo en la clase
+
+        public FormularioJuego(IRepositorioPreguntas repoP, IRepositorioPartidas repoPa, IRepositorioUsuarios repoU, int usuarioId)
         {
             InitializeComponent();
+
             _repoPreg = repoP;
             _repoPart = repoPa;
             _repoUsr = repoU;
+            _usuarioId = usuarioId;
+
+            // Crear la partida en la base de datos y guardar su Id
+            // GuardarPartida acepta usuarioId (nullable), dinero inicial 0 y correctas 0
+            _partidaId = _repoPart.GuardarPartida(_usuarioId > 0 ? (int?)_usuarioId : null, 0, 0);
+
+            if (_partidaId <= 0)
+            {
+                MessageBox.Show("No se pudo crear la partida en la base de datos. Revisa la conexión.");
+                this.Close();
+                return;
+            }
+
+            // Suscribir eventos y preparar interfaz (si no lo haces en designer)
+            btnRespuestaA.Click += BotonRespuesta_Click;
+            btnRespuestaB.Click += BotonRespuesta_Click;
+            btnRespuestaC.Click += BotonRespuesta_Click;
+            btnRespuestaD.Click += BotonRespuesta_Click;
+
+            btnRespuestaA.Tag = 0;
+            btnRespuestaB.Tag = 1;
+            btnRespuestaC.Tag = 2;
+            btnRespuestaD.Tag = 3;
+
             CargarPreguntas();
             MostrarPregunta();
         }
@@ -81,45 +108,45 @@ namespace Millonario_Challenge
                 MessageBox.Show("Error al finalizar la partida: " + ex.Message);
             }
         }
-        private void FormularioJuego_Load(object sender, EventArgs e)
-        {
-            btnRespuestaA.Tag = 0;
-            btnRespuestaB.Tag = 1;
-            btnRespuestaC.Tag = 2;
-            btnRespuestaD.Tag = 3;
-        }
+
         private void BotonRespuesta_Click(object sender, EventArgs e)
         {
-            // Saber cuál botón fue presionado
+            if (_partidaId <= 0)
+            {
+                MessageBox.Show("Error: la partida no fue creada. No se puede registrar la respuesta.");
+                return;
+            }
+
             Button boton = (Button)sender;
-
-            // Convertir el valor del Tag (0, 1, 2 o 3) a número
             int seleccionado = Convert.ToInt32(boton.Tag);
-
-            // Obtener la pregunta actual
             var p = _preguntas[_indiceActual];
-
-            // Verificar si la respuesta es correcta
             bool esCorrecto = seleccionado == p.IndiceCorrecto;
 
-            if (esCorrecto)
+            try
             {
-                _correctas++;
-                _dinero += p.Premio;
-                lblDinero.Text = "Dinero: " + _dinero;
+                if (esCorrecto)
+                {
+                    _correctas++;
+                    _dinero += p.Premio;
+                    lblDinero.Text = "Dinero: " + _dinero;
 
-                // Guardar respuesta correcta en base de datos
-                _repoPart.GuardarRespuestaPartida(_partidaId, p.Id, null, true);
+                    // Aquí idealmente pasarías el id real de la opción (si lo tienes).
+                    // Si no tienes OpcionId, puedes dejar null si la columna lo permite.
+                    _repoPart.GuardarRespuestaPartida(_partidaId, p.Id, null, true);
 
-                // Pasar a la siguiente pregunta
-                _indiceActual++;
-                MostrarPregunta();
+                    _indiceActual++;
+                    MostrarPregunta();
+                }
+                else
+                {
+                    _repoPart.GuardarRespuestaPartida(_partidaId, p.Id, null, false);
+                    MessageBox.Show("Respuesta incorrecta. Fin del juego.");
+                    FinalizarPartida();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Respuesta incorrecta. Fin del juego.");
-                _repoPart.GuardarRespuestaPartida(_partidaId, p.Id, null, false);
-                FinalizarPartida();
+                MessageBox.Show("Error al guardar la respuesta: " + ex.Message);
             }
         }
 
