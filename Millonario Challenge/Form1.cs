@@ -38,7 +38,7 @@ namespace Millonario_Challenge
 
         private void btnRanking_Click(object sender, EventArgs e)
         {
-            var frm = new FormularioRanking(_repoPart);
+            var frm = new FormularioRanking();
             frm.ShowDialog();
         }
 

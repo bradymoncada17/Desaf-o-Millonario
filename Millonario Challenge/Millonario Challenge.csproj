@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConexionBD.cs" />
+    <Compile Include="ExportadorCsv.cs" />
     <Compile Include="FabricaPreguntas.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -73,6 +74,12 @@
     <Compile Include="FormularioRanking.Designer.cs">
       <DependentUpon>FormularioRanking.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormularioRegistroUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioRegistroUsuario.Designer.cs">
+      <DependentUpon>FormularioRegistroUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="IRepositorioPartidas.cs" />
     <Compile Include="IRepositorioPreguntas.cs" />
     <Compile Include="IRepositorioUsuarios.cs" />
@@ -97,6 +104,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormularioAdmin.resx">
       <DependentUpon>FormularioAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioRanking.resx">
+      <DependentUpon>FormularioRanking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioRegistroUsuario.resx">
+      <DependentUpon>FormularioRegistroUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
