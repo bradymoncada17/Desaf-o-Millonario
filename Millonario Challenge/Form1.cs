@@ -10,16 +10,41 @@ using System.Windows.Forms;
 
 namespace Millonario_Challenge
 {
-    public partial class MainForm : Form
+    public partial class FormularioPrincipal : Form
     {
-        public MainForm()
+        private readonly IRepositorioPreguntas _repoPreg;
+        private readonly IRepositorioPartidas _repoPart;
+        private readonly IRepositorioUsuarios _repoUsr;
+
+        public FormularioPrincipal()
         {
             InitializeComponent();
+            _repoPreg = new RepositorioPreguntasSql();
+            _repoPart = new RepositorioPartidasSql() as IRepositorioPartidas;
+            _repoUsr = new RepositorioUsuariosSql();
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
+        private void btnIniciarJuego_Click(object sender, EventArgs e)
         {
+            var frm = new FormularioJuego(_repoPreg, _repoPart, _repoUsr);
+            frm.ShowDialog();
+        }
 
+        private void btnAdministrarPreguntas_Click(object sender, EventArgs e)
+        {
+            var frm = new FormularioAdmin(_repoPreg);
+            frm.ShowDialog();
+        }
+
+        private void btnRanking_Click(object sender, EventArgs e)
+        {
+            var frm = new FormularioRanking(_repoPart);
+            frm.ShowDialog();
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
