@@ -33,6 +33,7 @@
             this.btnAdministrarPreguntas = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.lblTitulo = new System.Windows.Forms.Label();
+            this.lblBienvenida = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnIniciarJuego
@@ -89,11 +90,21 @@
             this.lblTitulo.TabIndex = 7;
             this.lblTitulo.Text = "Millonario Challenge";
             // 
+            // lblBienvenida
+            // 
+            this.lblBienvenida.AutoSize = true;
+            this.lblBienvenida.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBienvenida.Location = new System.Drawing.Point(222, 435);
+            this.lblBienvenida.Name = "lblBienvenida";
+            this.lblBienvenida.Size = new System.Drawing.Size(0, 24);
+            this.lblBienvenida.TabIndex = 14;
+            // 
             // FormularioPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(560, 495);
+            this.ClientSize = new System.Drawing.Size(560, 561);
+            this.Controls.Add(this.lblBienvenida);
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnAdministrarPreguntas);
@@ -112,6 +123,7 @@
         private System.Windows.Forms.Button btnAdministrarPreguntas;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Label lblTitulo;
+        private System.Windows.Forms.Label lblBienvenida;
     }
 }
 

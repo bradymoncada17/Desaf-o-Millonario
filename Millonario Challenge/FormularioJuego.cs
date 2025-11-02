@@ -12,6 +12,15 @@ namespace Millonario_Challenge
 {
     public partial class FormularioJuego : Form
     {
+        private int usuarioId;
+        private string nombreUsuario;
+
+        public FormularioJuego(int usuarioId, string nombreUsuario)
+        {
+            this.usuarioId = usuarioId;
+            this.nombreUsuario = nombreUsuario;
+        }
+
         public FormularioJuego(IRepositorioPreguntas repoPreg, IRepositorioPartidas repoPart, IRepositorioUsuarios repoUsr)
         {
             InitializeComponent();
