@@ -73,19 +73,23 @@ Configurar la cadena de conexión en ConexionBD.cs.
 
 Ejecutar el proyecto con Ctrl + F5.
 
-Capturas sugeridas
+Capturas, 
+<img width="535" height="380" alt="image" src="https://github.com/user-attachments/assets/2a88f816-1b18-4908-9a3d-32a5fa9e9fa2" />
+<img width="534" height="388" alt="image" src="https://github.com/user-attachments/assets/00882659-23b5-4e67-a9b2-6a017d31126e" />
+<img width="810" height="491" alt="image" src="https://github.com/user-attachments/assets/5bdb0a18-79d0-4398-b833-c87354840d01" />
+<img width="1409" height="641" alt="image" src="https://github.com/user-attachments/assets/f7a7a4f5-77bf-478b-923a-c9cfb07d7cbb" />
+<img width="808" height="486" alt="image" src="https://github.com/user-attachments/assets/bc63b08d-f674-41f5-b985-8df8b52e20f8" />
+<img width="775" height="378" alt="image" src="https://github.com/user-attachments/assets/c246304a-cd4c-48ce-b826-31726e6498e3" />
+<img width="574" height="600" alt="image" src="https://github.com/user-attachments/assets/4d043b75-14d2-478d-b03b-e3f6cb45f87d" />
+Juego
+<img width="806" height="487" alt="image" src="https://github.com/user-attachments/assets/22505ca3-826e-4399-8579-048024aacee1" />
+50:50
+<img width="808" height="486" alt="image" src="https://github.com/user-attachments/assets/6982e6d3-1946-4196-ab38-15d0a2a091da" />
+Retirarse
+<img width="941" height="511" alt="image" src="https://github.com/user-attachments/assets/e4ee8693-5a95-4237-ba32-47d86d7dda5e" />
 
-Guarda las imágenes en la carpeta /Recursos/ y referencia:
 
-/Recursos/registro_usuario.png
 
-/Recursos/menu_principal.png
-
-/Recursos/juego.png
-
-/Recursos/ranking.png
-
-/Recursos/admin.png
 
 Autores
 
