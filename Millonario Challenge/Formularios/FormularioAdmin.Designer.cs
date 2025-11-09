@@ -110,6 +110,8 @@
             // 
             this.lblPregunta.AutoSize = true;
             this.lblPregunta.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPregunta.ForeColor = System.Drawing.Color.DarkSlateBlue;
+            this.lblPregunta.Image = global::Millonario_Challenge.Properties.Resources.Recurso_1fondo;
             this.lblPregunta.Location = new System.Drawing.Point(481, 54);
             this.lblPregunta.Name = "lblPregunta";
             this.lblPregunta.Size = new System.Drawing.Size(91, 24);
@@ -120,6 +122,8 @@
             // 
             this.lblDificultad.AutoSize = true;
             this.lblDificultad.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDificultad.ForeColor = System.Drawing.Color.DarkSlateBlue;
+            this.lblDificultad.Image = global::Millonario_Challenge.Properties.Resources.Recurso_1fondo;
             this.lblDificultad.Location = new System.Drawing.Point(477, 308);
             this.lblDificultad.Name = "lblDificultad";
             this.lblDificultad.Size = new System.Drawing.Size(90, 24);
@@ -130,6 +134,8 @@
             // 
             this.lblIndice.AutoSize = true;
             this.lblIndice.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIndice.ForeColor = System.Drawing.Color.DarkSlateBlue;
+            this.lblIndice.Image = global::Millonario_Challenge.Properties.Resources.Recurso_1fondo;
             this.lblIndice.Location = new System.Drawing.Point(477, 265);
             this.lblIndice.Name = "lblIndice";
             this.lblIndice.Size = new System.Drawing.Size(143, 24);
@@ -140,6 +146,8 @@
             // 
             this.lblOpcionD.AutoSize = true;
             this.lblOpcionD.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOpcionD.ForeColor = System.Drawing.Color.DarkSlateBlue;
+            this.lblOpcionD.Image = global::Millonario_Challenge.Properties.Resources.Recurso_1fondo;
             this.lblOpcionD.Location = new System.Drawing.Point(477, 220);
             this.lblOpcionD.Name = "lblOpcionD";
             this.lblOpcionD.Size = new System.Drawing.Size(95, 24);
@@ -150,6 +158,8 @@
             // 
             this.lblOpcionC.AutoSize = true;
             this.lblOpcionC.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOpcionC.ForeColor = System.Drawing.Color.DarkSlateBlue;
+            this.lblOpcionC.Image = global::Millonario_Challenge.Properties.Resources.Recurso_1fondo;
             this.lblOpcionC.Location = new System.Drawing.Point(477, 177);
             this.lblOpcionC.Name = "lblOpcionC";
             this.lblOpcionC.Size = new System.Drawing.Size(95, 24);
@@ -160,6 +170,8 @@
             // 
             this.lblOpcionB.AutoSize = true;
             this.lblOpcionB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOpcionB.ForeColor = System.Drawing.Color.DarkSlateBlue;
+            this.lblOpcionB.Image = global::Millonario_Challenge.Properties.Resources.Recurso_1fondo;
             this.lblOpcionB.Location = new System.Drawing.Point(477, 134);
             this.lblOpcionB.Name = "lblOpcionB";
             this.lblOpcionB.Size = new System.Drawing.Size(94, 24);
@@ -170,6 +182,8 @@
             // 
             this.lblOpcionA.AutoSize = true;
             this.lblOpcionA.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOpcionA.ForeColor = System.Drawing.Color.DarkSlateBlue;
+            this.lblOpcionA.Image = global::Millonario_Challenge.Properties.Resources.Recurso_1fondo;
             this.lblOpcionA.Location = new System.Drawing.Point(477, 94);
             this.lblOpcionA.Name = "lblOpcionA";
             this.lblOpcionA.Size = new System.Drawing.Size(95, 24);
@@ -178,7 +192,10 @@
             // 
             // btnCargarSemilla
             // 
+            this.btnCargarSemilla.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCargarSemilla.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCargarSemilla.ForeColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnCargarSemilla.Image = global::Millonario_Challenge.Properties.Resources.Recurso_1fondo;
             this.btnCargarSemilla.Location = new System.Drawing.Point(468, 354);
             this.btnCargarSemilla.Name = "btnCargarSemilla";
             this.btnCargarSemilla.Size = new System.Drawing.Size(220, 43);
@@ -189,7 +206,11 @@
             // 
             // btnEliminar
             // 
+            this.btnEliminar.BackgroundImage = global::Millonario_Challenge.Properties.Resources.Recurso_1fondo;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.ForeColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnEliminar.Image = global::Millonario_Challenge.Properties.Resources.Recurso_1fondo;
             this.btnEliminar.Location = new System.Drawing.Point(335, 308);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(120, 43);
@@ -200,7 +221,10 @@
             // 
             // btnEditar
             // 
+            this.btnEditar.BackgroundImage = global::Millonario_Challenge.Properties.Resources.Recurso_1fondo;
+            this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditar.ForeColor = System.Drawing.Color.DarkSlateBlue;
             this.btnEditar.Location = new System.Drawing.Point(200, 308);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(120, 43);
@@ -211,7 +235,10 @@
             // 
             // btnAgregar
             // 
+            this.btnAgregar.BackgroundImage = global::Millonario_Challenge.Properties.Resources.Recurso_1fondo;
+            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregar.ForeColor = System.Drawing.Color.DarkSlateBlue;
             this.btnAgregar.Location = new System.Drawing.Point(65, 308);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(120, 43);
@@ -224,6 +251,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.btnEditar);
@@ -244,7 +272,9 @@
             this.Controls.Add(this.txtOpcionD);
             this.Controls.Add(this.txtPregunta);
             this.Controls.Add(this.lstPreguntas);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "FormularioAdmin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormularioAdmin";
             this.ResumeLayout(false);
             this.PerformLayout();

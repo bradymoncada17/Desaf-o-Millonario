@@ -122,6 +122,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Base de datos\MillonarioDBDataSet.xsc">
       <DependentUpon>MillonarioDBDataSet.xsd</DependentUpon>
@@ -146,6 +147,63 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\Recurso 2fondo2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\Recurso 1fondo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\Recurso 3iniciar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\Recurso 1fondo3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\Recurso 2LETRERO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\PNG\Recurso 1INICIAR JUEGO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\PNG\Recurso 2INICIAR JUEGO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\PNG\Recurso 3INICIAR JUEGO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\PNG\Recurso 4INICIAR JUEGO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\PNG\Recurso 5ADMINISTRAR.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\PNG\Recurso 6RANKING.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\PNG\Recurso 8RANKING.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\PNG\Recurso 9RANKING.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Recurso 1RANKING.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Recurso 2LOGO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Recurso 1fondo3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Recurso 1LOGO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Recurso 1LOGO1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Recurso 2LOGO1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -78,5 +78,10 @@ namespace Millonario_Challenge
         {
             Application.Exit();
         }
+
+        private void lblBienvenida_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

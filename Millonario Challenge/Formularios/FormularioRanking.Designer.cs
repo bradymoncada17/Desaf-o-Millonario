@@ -36,14 +36,18 @@
             // dgvRanking
             // 
             this.dgvRanking.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvRanking.Location = new System.Drawing.Point(110, 47);
+            this.dgvRanking.GridColor = System.Drawing.Color.DarkSlateBlue;
+            this.dgvRanking.Location = new System.Drawing.Point(159, 47);
             this.dgvRanking.Name = "dgvRanking";
-            this.dgvRanking.Size = new System.Drawing.Size(538, 294);
+            this.dgvRanking.Size = new System.Drawing.Size(445, 294);
             this.dgvRanking.TabIndex = 0;
             // 
             // btnExportarCsv
             // 
+            this.btnExportarCsv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExportarCsv.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportarCsv.ForeColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnExportarCsv.Image = global::Millonario_Challenge.Properties.Resources.Recurso_1fondo;
             this.btnExportarCsv.Location = new System.Drawing.Point(301, 347);
             this.btnExportarCsv.Name = "btnExportarCsv";
             this.btnExportarCsv.Size = new System.Drawing.Size(146, 43);
@@ -56,10 +60,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackgroundImage = global::Millonario_Challenge.Properties.Resources.Recurso_1fondo;
+            this.ClientSize = new System.Drawing.Size(771, 462);
             this.Controls.Add(this.btnExportarCsv);
             this.Controls.Add(this.dgvRanking);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "FormularioRanking";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormularioRanking";
             ((System.ComponentModel.ISupportInitialize)(this.dgvRanking)).EndInit();
             this.ResumeLayout(false);

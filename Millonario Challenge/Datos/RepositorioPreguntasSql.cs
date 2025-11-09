@@ -209,13 +209,47 @@ namespace Millonario_Challenge
             }
         }
 
+        // Método Eliminar modificado: borra dependencias primero dentro de una transacción
         public void Eliminar(int preguntaId)
         {
             var conexion = ConexionBD.Instancia.ObtenerConexion();
-            using (var cmd = new SqlCommand("DELETE FROM Preguntas WHERE PreguntaId=@id", conexion))
+            using (var tran = conexion.BeginTransaction())
             {
-                cmd.Parameters.AddWithValue("@id", preguntaId);
-                cmd.ExecuteNonQuery();
+                try
+                {
+                    // 1) Eliminar respuestas de partidas que referencian la pregunta
+                    using (var cmd = new SqlCommand("DELETE FROM RespuestasPartida WHERE PreguntaId = @pid", conexion, tran))
+                    {
+                        cmd.Parameters.AddWithValue("@pid", preguntaId);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    // 2) Eliminar opciones asociadas a la pregunta
+                    using (var cmd = new SqlCommand("DELETE FROM Opciones WHERE PreguntaId = @pid", conexion, tran))
+                    {
+                        cmd.Parameters.AddWithValue("@pid", preguntaId);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    // 3) Finalmente eliminar la pregunta
+                    using (var cmd = new SqlCommand("DELETE FROM Preguntas WHERE PreguntaId = @pid", conexion, tran))
+                    {
+                        cmd.Parameters.AddWithValue("@pid", preguntaId);
+                        int afectadas = cmd.ExecuteNonQuery();
+                        if (afectadas == 0)
+                        {
+                            throw new Exception("No se encontró la pregunta especificada.");
+                        }
+                    }
+
+                    tran.Commit();
+                }
+                catch (Exception ex)
+                {
+                    tran.Rollback();
+                    // Re-lanzar la excepción para que la capa superior (UI) la muestre o la loguee
+                    throw new Exception("Error al eliminar la pregunta: " + ex.Message, ex);
+                }
             }
         }
     }
